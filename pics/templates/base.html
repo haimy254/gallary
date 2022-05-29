@@ -21,9 +21,17 @@
     <title>THE GALLERY</title>
   </head>
   <body>
-
-    {% block content%}
-    <h1>Its working</h1>
-    {% endblock%}
+    {% include 'nav.html'%}
+    <div class="m-5">
+      {% block content%}
+      <h1>Its working</h1>
+      {% endblock%}
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/main.js'%}"></script>
   </body>
 </html>
