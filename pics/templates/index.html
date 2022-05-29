@@ -1,0 +1,24 @@
+{%extends 'base.html'%} {% block content %}
+<div class="card" style="width: 18rem">
+  <img class="card-img-top" src="..." alt="Card image cap" />
+  <div class="card-body">
+    {% for image in images %}
+    <img
+      src="{{ image.image.url }}"
+      class="img-responsive"
+      style="width: 100%; float: left; margin-right: 10px"
+    />
+    <h5 class="card-title">{{image.name}}</h5>
+    <p class="card-text"></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{image.location}}</li>
+    <li class="list-group-item">{{ image . category}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">copy link</a>
+    <a href="#" class="card-link">view more details</a>
+    {% endfor%}
+  </div>
+</div>
+{% endblock %}
