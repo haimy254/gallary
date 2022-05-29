@@ -10,7 +10,7 @@ def image_view(request):
 
 		if form.is_valid():
 			form.save()
-			return redirect('success')
+			return redirect('index')
 	else:
 		form = ImageForm()
 	return render(request, 'photo/imageform.html', {'form' : form})
@@ -21,3 +21,7 @@ def success(request):
 
 
 # Create your views here.
+# class SearchResults(request):
+#     if request.method=='POST':
+        
+    
