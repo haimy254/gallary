@@ -51,6 +51,16 @@ def post_update(request,image_id):
     except Image.DoesNotExist:
         images=Image.objects.all()
         return redirect ('show_images.html',{'all_images':images})
+    
+def display_details(request,image_id):
+    image_id=int(image_id)
+    
+    try:
+        image_sel=Image.objects.get(id =image_id)
+        return redirect('details.html',{'selected_image':image_sel})
+    except Image.DoesNotExist:
+        images=Image.objects.all()
+        return redirect ('show_images.html',{'all_images':images})
    
     
     

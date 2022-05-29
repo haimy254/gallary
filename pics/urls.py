@@ -9,6 +9,7 @@ urlpatterns = [
     path("",home_view,name='home'),
 	# path("search/",views.search_result, name="search_results"),
     path('show_images/',display_images,name='all_images'),
+    path('details/<int:image_id>',display_details,name='details'),
     path('get_update/<int:image_id>',get_update,name='get_update'),
     path('delete_image/<int:image_id>',delete_image,name='delete_image'),
 ]
