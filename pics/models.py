@@ -34,7 +34,7 @@ class Image(models.Model):
     
     @classmethod
     def search_by_location(cls,search_term):
-        image = cls.objects.filter(category__icontains=search_term)
+        image = cls.objects.filter(location__icontains=search_term)
         return image
     
 
