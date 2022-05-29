@@ -6,10 +6,14 @@ from django.conf.urls.static import static
 from .views import *
 
 urlpatterns = [
+    path("",home_view,name='home'),
     path('image/', image_view, name = 'index'),
 	path('imageform/', image_view, name = 'imageform'),
 	# path("search/",views.search_result, name="search_results"),
     path('success', success, name = 'success'),
+    path('show_images/',display_images,name='all_images'),
+    path('get_update/<int:image_id>',get_update,name='get_update'),
+    path('delete_image/<int:image_id>',delete_image,name='delete_image'),
 ]
 
 if settings.DEBUG:

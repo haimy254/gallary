@@ -1,0 +1,26 @@
+{%extends 'base.html'%} {% block content %}
+
+<h1>All images</h1>
+
+{%if all_images%}
+<div class="row">
+  {%for image in all_images%}
+  <div class="col-4">
+    <p>{{image.image_name}}</p>
+
+    <img src="{{image.image.url}}" width="100%" height="300px" alt="" />
+    <div class="my-2 mx-2">
+      <a href="{% url 'home'%}get_update/{{image.id}}" class="btn btn-primary"
+        >update</a
+      >
+      <a href="{% url 'home'%}delete_image/{{image.id}}" class="btn btn-danger"
+        >delete</a
+      >
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{%else%}
+<h3 class="text-warning m-3">No Images found</h3>
+{%endif%} {%endblock%}
