@@ -8,13 +8,13 @@ from .models import Image
 def image_view(request):
 
 	if request.method == 'POST':
-		form = ImageForm(request.POST, request.FILES)
+		form = Image(request.POST, request.FILES)
 
 		if form.is_valid():
 			form.save()
 			return redirect('index')
 	else:
-		form = ImageForm()
+		form = Image()
 	return render(request, 'photo/imageform.html', {'form' : form})
 
 
@@ -43,14 +43,15 @@ def post_update(request,image_id):
     image_id= int(image_id)
     
     try:
-        image_sel=Image.objects.get(id =image_id)
+        image_sel=Image.objects.post(id =image_id)
+        image=Image(request.POST or None, instance=image_sel)
+        if image.is_valid():
+            image.save()
+        return redirect('show_images.html',{'all_images':image})
     except Image.DoesNotExist:
-        return redirect ('')
-    image_form=ImageForm(request.POST or None, instance=image_sel)
-    if image_form.is_valid():
-        image_form.save()
-        return redirect('home')
-    return render(request,'show_images.html',{'all_images':image_form})
+        images=Image.objects.all()
+        return redirect ('show_images.html',{'all_images':images})
+   
     
     
 def delete_image(request,image_id):

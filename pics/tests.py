@@ -7,4 +7,7 @@ class LocationTestClass(TestCase):
     def setUp(self):
         self.nairobi= Location(location='nairobi')
         
-    pass
+    def test_instance(self):
+        self.assertTrue(isinstance(self.nairobi,Image))
+        
+    pass 

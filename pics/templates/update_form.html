@@ -1,8 +1,10 @@
 {%extends 'base.html'%} {% block content %}
+
 <h3 class="text-info">update form</h3>
 
 <div class="col-md-5 col-sm-10 p-4">
-  <form action="" method="get">
+  <form action="" method="post">
+  {% csrf_token%}
     <div class="form-group">
       <label for=""></label>
       <input
