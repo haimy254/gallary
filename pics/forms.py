@@ -1,5 +1,3 @@
-from sre_constants import CATEGORY
-from tkinter import image_names
 from django import forms
 from .models import *
 
@@ -21,12 +19,12 @@ LOCATION_CHOICE=[
 ]
 #creating forms for models 
 class ImageForm(forms.ModelsForm):
-    class meta:
-        image = forms.ImageField(lable='upload image')
-        image_names= forms.CharField(lable = 'image name')
-        image_description=forms.CharField(lable='description of the image')
-        location = forms.CharField(lable='select image location',widget=forms.Select(choices=LOCATION_CHOICE))
-        category = forms.CharField(lable='select image category',widget=forms.Select(choices=CATEGORY_CHOICE))
+   
+    image = forms.ImageField(lable='upload image')
+    image_names= forms.CharField(lable = 'image name')
+    image_description=forms.CharField(lable='description of the image')
+    location = forms.CharField(lable='select image location',widget=forms.Select(choices=LOCATION_CHOICE))
+    category = forms.CharField(lable='select image category',widget=forms.Select(choices=CATEGORY_CHOICE))
         
         
         
