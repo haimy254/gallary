@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 from distutils.command.upload import upload
 
@@ -29,13 +30,18 @@ class Image(models.Model):
     
     @classmethod
     def search_by_category(cls,search_term):
-        image = cls.objects.filter(category__icontains=search_term)
-        return image
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
     
     @classmethod
     def search_by_location(cls,search_term):
-        image = cls.objects.filter(location__icontains=search_term)
-        return image
+        images = cls.objects.filter(location__icontains=search_term)
+        return images
+    
+    @classmethod
+    def get_images(cls):
+        images=cls.objects.all()
+        return images
     
 
     

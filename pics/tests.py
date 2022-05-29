@@ -8,6 +8,9 @@ class LocationTestClass(TestCase):
         self.nairobi= Location(location='nairobi')
         
     def test_instance(self):
-        self.assertTrue(isinstance(self.nairobi,Image))
+        self.assertTrue(isinstance(self.nairobi,Location))
         
-    pass 
+    def test_save_method(self):
+        self.nairobi.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) >0)
