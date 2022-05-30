@@ -23,9 +23,12 @@ def success(request):
 	return HttpResponse('successfully uploaded')
 
 def display_images(request):
+    
+   
     if request.method=="GET":
         images=Image.objects.all();
-        return render(request,'show_images.html',{'all_images':images})
+        absolute_url=request.build_absolute_uri()
+        return render(request,'show_images.html',{'all_images':images,"root_url":absolute_url})
     
 def home_view(request):
     return render(request,'home.html')
@@ -82,19 +85,26 @@ def delete_image(request,image_id):
 @csrf_exempt
 def search(request):   
     if request.method=='POST':
-        search_term = request.POST.get("category",False)
-        print(search_term)
-        category=Image.search_by_category(search_term)
-        if category is None:
-            HttpResponse('theres not such a category')
+        search_term = request.POST.get("category")
+       
+       
+       
+        image_found_by_name=Image.objects.get(image_name=search_term)
+        
+        if image_found_by_name:
+            found_images=image_found_by_name
+            print(found_images)
+            message = f"{search_term}" 
+            
+            return render(request, 'search.html',{"message":message,"images": found_images})  
         else:
-            searched_images = Image.search_by_category(search_term)
-            print(searched_images)
-            message = f"{search_term}"   
-            return render(request, 'search.html',{"message":message,"images": searched_images})   
+            message="no such resource found"
+            images=Image.objects.all()
+            return render(request,'show_images.html',{"message":message,'all_images':images})
+              
     else:
-         message = "You haven't searched for any image"
-    return render(request, 'search.html',{"message":message})
+        message = "You haven't searched for any image"
+        return render(request, 'search.html',{"message":message})
         
     
 

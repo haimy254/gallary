@@ -1,23 +1,29 @@
 {%extends 'base.html'%} {% block content %}
 
-<form action="{% url 'search'%}" method="POST">
-  <div class="input-group">
-    <div class="form-outline">
-      <input
-        id="search-focus"
-        type="search"
-        id="form1"
-        name="category"
-        class="form-control"
-      />
-      <label class="form-label" for="form1" placeholder="search"></label>
+<div class="p-3">
+  <form action="{% url 'search'%}" method="POST">
+    <div class="input-group">
+      <div class="form-outline">
+        <input
+          id="search-focus"
+          type="search"
+          id="form1"
+          name="category"
+          class="form-control"
+          placeholder="search..."
+          style="border-radius: 0"
+        />
+        <label class="form-label" for="form1" placeholder="search"></label>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary btn-sm"
+        style="max-height: 37px; border-radius: 0"
+      >
+        <i class="fas fa-search"></i>
+      </button>
     </div>
-    <button type="submit" class="btn btn-primary">
-      <i class="fas fa-search"></i>
-    </button>
-  </div>
-</form>
-<div class="bg">
+  </form>
   <h1 class="all">All images</h1>
 
   {%if all_images%}
@@ -50,7 +56,7 @@
           <hr />
           <div>
             <a href="#" class="copy-target"
-              >127.0.0.1:8000/{% url 'home'%}details/pics/{{image.id}}</a
+              >http:127.0.0.1:8000/{% url 'home'%}details/pics/{{image.id}}</a
             ><span class="btn btn-outline-primary btn-sm m-3 copy-btn"
               >copy link</span
             >
