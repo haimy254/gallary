@@ -12,6 +12,8 @@ urlpatterns = [
     path('details/<int:image_id>',display_details,name='details'),
     path('get_update/<int:image_id>',get_update,name='get_update'),
     path('delete_image/<int:image_id>',delete_image,name='delete_image'),
+    # path('copy/',display_copy,name='copylink'),
+    
 ]
 
 if settings.DEBUG:
