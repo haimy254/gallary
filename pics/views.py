@@ -77,13 +77,18 @@ def delete_image(request,image_id):
         images=Image.objects.all()
         return render(request,'show_images.html',{'all_images':images})
     
-    
+    #search function to post the category
+def search(request):   
+    if 'category' in request.GET and request.GET['category']:
+        search_images = request.GET.get("category")
+        searched_images = Image.search_by_category(search_images)
+        message = f"{search_images}"   
+        return render(request, 'search.html',{"message":message,"images": searched_images})   
+    else:
+         message = "You haven't searched for any image"
+    return render(request, 'search.html',{"message":message})
         
     
 
-#found the solution
-# Create your views here.
-# class SearchResults(request):
-#     if request.method=='POST':
         
     

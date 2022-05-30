@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEARCH RESULTS </title>
+</head>
+<body>
+<div class="container">
+        <div class="row">            {% if images%}
+            <h2 class="capitalize">{{ images|length }} {{message}} images found...</h2>
+            {% else %}
+            <h2> No images found {{message}}</h2>
+            {% endif %}        </div>
+        <hr>
+        <div class="row">
+            <div class="container">
+                <div class="card-columns">
+                    {% if all_images %}
+                    {% for image in images %}
+                   
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" class="img-fluid" src="{{image.image.url}}" size="100px200">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
