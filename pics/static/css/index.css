@@ -45,7 +45,7 @@ html,body{
   color: skyblue;
   display: block;
 }.bg{
-   background-image: url("images.jpeg");
+   background:#000;
   width: 100%;
   height: 100rem;
   background-size: cover;
@@ -54,4 +54,13 @@ html,body{
 }
 .all{
   color: green;
+}
+
+.bg-gallery{
+   background-image:("gallery.png");
+  width: 100%;
+  height: 100rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

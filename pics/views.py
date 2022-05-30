@@ -1,6 +1,7 @@
 from ast import Try
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 from .forms import *
 from .models import Image
 
@@ -78,12 +79,19 @@ def delete_image(request,image_id):
         return render(request,'show_images.html',{'all_images':images})
     
     #search function to post the category
+@csrf_exempt
 def search(request):   
-    if 'category' in request.GET and request.GET['category']:
-        search_images = request.GET.get("category")
-        searched_images = Image.search_by_category(search_images)
-        message = f"{search_images}"   
-        return render(request, 'search.html',{"message":message,"images": searched_images})   
+    if request.method=='POST':
+        search_term = request.POST.get("category",False)
+        print(search_term)
+        category=Image.search_by_category(search_term)
+        if category is None:
+            HttpResponse('theres not such a category')
+        else:
+            searched_images = Image.search_by_category(search_term)
+            print(searched_images)
+            message = f"{search_term}"   
+            return render(request, 'search.html',{"message":message,"images": searched_images})   
     else:
          message = "You haven't searched for any image"
     return render(request, 'search.html',{"message":message})
