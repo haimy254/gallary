@@ -3,7 +3,13 @@
 <form action="{% url 'search'%}" method="POST">
   <div class="input-group">
     <div class="form-outline">
-      <input id="search-focus" type="search" id="form1" name="category" class="form-control" />
+      <input
+        id="search-focus"
+        type="search"
+        id="form1"
+        name="category"
+        class="form-control"
+      />
       <label class="form-label" for="form1" placeholder="search"></label>
     </div>
     <button type="submit" class="btn btn-primary">
@@ -43,8 +49,8 @@
           </p>
           <hr />
           <div>
-            <a href="{% url 'home'%}details/{{image.id}}" class="copy-target"
-              >more details</a
+            <a href="#" class="copy-target"
+              >127.0.0.1:8000/{% url 'home'%}details/pics/{{image.id}}</a
             ><span class="btn btn-outline-primary btn-sm m-3 copy-btn"
               >copy link</span
             >

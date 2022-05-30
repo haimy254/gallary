@@ -62,7 +62,6 @@ $(document).ready(function () {
         setTimeout(function () {
           e.target.innerHTML = "copy link";
         }, 2000);
-        alert("copied")
       }
     });
   }
