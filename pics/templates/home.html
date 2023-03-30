@@ -4,8 +4,8 @@
       <div class="card">
         <div class="card-body">
             <div class="bg-gallery" align='center'>
-                <h1>WELCOME</h1>
-                <h2>TO</h2>
+                {% comment %} <h1>WELCOME</h1>
+                <h2>TO</h2> {% endcomment %}
             </div>
         </div>
       </div>
@@ -14,9 +14,9 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">THE ART OF GALLERY</h2>
-          <p class="card-text">
+          <p class="card-text" align-item="center">
             The gallery app is a simple tool to view, manage, and organize images and videos on your devices</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="{% url 'all_images' %}" class="btn btn-primary">ALL IMAGES</a>
         </div>
       </div>
     </div>

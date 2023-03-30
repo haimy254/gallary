@@ -88,4 +88,13 @@ body {
 
 .card{
   border-radius: 2rem;
+  /* align-items: center; */
+}
+
+.col-sm-6{
+  font-weight: bolder;
+}
+
+.card-text{
+  align-items: center;
 }
